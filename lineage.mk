@@ -12,13 +12,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-$(call inherit-product, device/uhans/mx/mx.mk)
-
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
+$(call inherit-product, device/uhans/mx/device_mx.mk)
 
 PRODUCT_NAME := lineage_mx
-BOARD_VENDOR := uhans
+BOARD_VENDOR := Uhans	
 PRODUCT_DEVICE := mx
 
 PRODUCT_GMS_CLIENTID_BASE := android-tinno
@@ -27,7 +26,7 @@ PRODUCT_MANUFACTURER := Uhans
 PRODUCT_MODEL := MX
 
 PRODUCT_BRAND := Uhans
-TARGET_VENDOR := uhans
+TARGET_VENDOR := Uhans
 TARGET_VENDOR_PRODUCT_NAME := mx
 TARGET_VENDOR_DEVICE_NAME := mx
 PRODUCT_RESTRICT_VENDOR_FILES := false

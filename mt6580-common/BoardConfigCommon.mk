@@ -19,7 +19,7 @@ endif
 
 TARGET_CYANOGEN_COMMON := mt6580
 
-COMMON_PATH := device/walton/g7/mt6580-common
+COMMON_PATH := device/uhans/mx/mt6580-common
 TARGET_SPECIFIC_HEADER_PATH += $(COMMON_PATH)/include
 
 TARGET_BOARD_PLATFORM ?= mt6580
