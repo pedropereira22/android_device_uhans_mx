@@ -64,11 +64,16 @@ TARGET_INCLUDE_XLOG_SYMBOLS := false
 TARGET_INCLUDE_RIL_SYMBOLS := true
 include $(DEVICE_PATH)/symbols.mk
 
-# Deodex ? = false
-ODEX := true
+# Force Deodex ? = false
+ODEX := false
 
 ifeq ($(ODEX),true)
     WITH_DEXPREOPT := true
     DISABLE_DEXPREOPT := false
+endif
+
+ifeq ($(ODEX),false)
+    WITH_DEXPREOPT := false
+    DISABLE_DEXPREOPT := true
 endif
 
