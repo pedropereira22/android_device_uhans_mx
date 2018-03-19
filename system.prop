@@ -38,8 +38,6 @@ ro.kernel.zio=38,108,105,16
 # Disable dirty region for Mali
 debug.hwui.render_dirty_regions=false
 
-ro.sf.lcd_density=220
-
 # performance
 ro.mtk_perf_simple_start_win=1
 ro.mtk_perf_response_time=1

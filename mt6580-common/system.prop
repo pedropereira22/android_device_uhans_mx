@@ -32,7 +32,7 @@ ro.sys.usb.mtp.whql.enable=0
 # Power off opt in IPO
 sys.ipo.pwrdncap=2
 
-ro.sys.usb.storage.type=mtp
+ro.sys.usb.storage.type=mtp,adb
 
 # USB BICR function
 ro.sys.usb.bicr=no
@@ -45,9 +45,6 @@ ro.camera.sound.forced=0
 ro.audio.silent=0
 
 ro.zygote.preload.enable=0
-
-# temporary enables NAV bar (soft keys)
-qemu.hw.mainkeys=1
 
 ro.kernel.zio=38,108,105,16
 #ro.kernel.qemu=0

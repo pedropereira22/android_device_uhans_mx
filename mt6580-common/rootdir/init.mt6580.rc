@@ -175,6 +175,11 @@ on post-fs-data
     # radvd
     mkdir /data/misc/radvd 0770 system system
     chmod 444 /etc/radvd/radvd.conf
+	
+	#prize-add face id-tangan-20171122-begin
+	# add by face id 
+	mkdir /data/system/users/faceid 0770 system system
+	#prize-add face id-tangan-20171122-end
 
     # Mali 3D GPU driver
     #insmod /vendor/lib/modules/mali.ko
@@ -227,6 +232,7 @@ on post-fs-data
     chmod 0660 /dev/msensor
     chmod 0660 /dev/gsensor
     chmod 0660 /dev/als_ps
+    chmod 0660 /dev/als_ps1
     chmod 0660 /dev/gyroscope
     chmod 0660 /dev/aal_als
     chmod 0660 /dev/m_batch_misc
@@ -242,6 +248,7 @@ on post-fs-data
     chown system system /dev/msensor
     chown system system /dev/gsensor
     chown radio system /dev/als_ps
+    chown radio system /dev/als_ps1
     chown system system /dev/gyroscope
     chown system system /dev/aal_als
     chown system system /dev/m_batch_misc
@@ -645,6 +652,9 @@ on post-fs-data
     chmod 0660 /dev/MTK_SMI
     chown media media /dev/MTK_SMI
 
+#sunwave fingerprint
+    chmod 0666 /dev/sunwave_fp
+
     #for eng mode
     chmod 0664 /dev/misc-sd
 
@@ -760,6 +770,9 @@ on boot
     chown system system /sys/class/leds/red/trigger
     chown system system /sys/class/leds/green/trigger
     chown system system /sys/class/leds/blue/trigger
+	chown system system /sys/class/leds/red/blink_go
+	chown system system /sys/class/leds/red/delay_on_off_ms
+	chown system system /sys/class/leds/red/fade_on_off_ms
 
     chown system system /sys/kernel/debug/ged/hal/fps_upper_bound
     chmod 0660 /sys/kernel/debug/ged/hal/fps_upper_bound
@@ -777,6 +790,12 @@ on boot
     chown radio system /sys/power/tuxonice/do_hibernate
     chmod 0770 /sys/power/tuxonice
     chmod 0220 /sys/power/tuxonice/do_hibernate
+# Add by cdfinger begin
+	chown  system system /dev/fpsdev0
+	symlink  /dev/fpsdev0   /dev/fps998
+	symlink  /dev/fpsdev0   /dev/fps1098
+	chmod 0666 /dev/fpsdev0
+# Add by cdfinger end	
 
 # Smartbook Handler Framework
     chown system system /sys/power/sb_state
@@ -960,6 +979,23 @@ service netdiag /vendor/bin/netdiag
     class main
     socket netdiag stream 0664 root inet
 
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+ 
+service gx_fpd /system/bin/gx_fpd
+    class late_start
+    user root
+    group root system
+	
+#sunwave fingerprint
+service fp /system/bin/fpserver
+    class main
+    user root
+	
+service fingerprintd /system/bin/fingerprintd 
+	class late_start 
+	user system
 
 service nvram_daemon /vendor/bin/nvram_daemon
     class main
@@ -1041,6 +1077,13 @@ service rbfota /vendor/bin/fota1
     disabled
     oneshot
 
+# prize-dingjun-20150507-start
+service wifimacaddr /vendor/bin/wifimacaddr
+    user root
+    group system
+    class late_start
+    oneshot
+# prize-dingjun-20150507-end
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -BK -dd
     class main
@@ -1337,6 +1380,12 @@ service memsicd3416x /vendor/bin/memsicd3416x
 	 user system
     group system
     class main
+
+service memsicp /vendor/bin/memsicp
+    user system
+    group system
+    class main
+
 service akmd8975 /vendor/bin/akmd8975
     disabled
     user system
@@ -1521,6 +1570,20 @@ service program_binary /vendor/bin/program_binary_service
     group graphics
     oneshot
 
+# prize-lifenfen-20150918
+service prizemusic /system/bin/sh /system/etc/prizemusic.sh
+    user root
+    group shell system
+    disabled
+    seclabel u:r:prizemusic:s0
+
+on property:persist.prize.music=1
+	start prizemusic
+
+on property:persist.prize.music=2
+	stop prizemusic
+# prize-lifenfen-20150918
+
 service ipo_swap /vendor/bin/ipo_swap
     class core
     user root
@@ -1538,3 +1601,13 @@ on property:debug.mtk.thermalindicator=0
 
 on property:debug.mtk.thermalindicator=1
 	start ThermalIndicator
+	
+	
+# Add by cdfinger begin
+
+service cdfingerdaemon /system/bin/cdfingerdaemon
+	user system
+	group system
+	class main
+	seclabel u:r:cdfingerserver:s0
+# Add by cdfinger end

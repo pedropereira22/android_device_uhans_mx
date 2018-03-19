@@ -4,6 +4,10 @@
 
 # System Server Services
 
+# Sunwave 
+media.fp                              u:object_r:fpserver_service:s0 
+fingerManager                         u:object_r:fpserver_service:s0
+
 # Other Services
 NvRAMAgent          u:object_r:nvram_agent_service:s0
 memory_dumper       u:object_r:mediaserver_service:s0

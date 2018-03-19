@@ -123,7 +123,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp,adb
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    qemu.hw.mainkeys=1 \
+    qemu.hw.mainkeys=0 \
     ro.sf.lcd_density=320
 
 # Torch
