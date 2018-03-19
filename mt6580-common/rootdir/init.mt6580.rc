@@ -992,10 +992,6 @@ service gx_fpd /system/bin/gx_fpd
 service fp /system/bin/fpserver
     class main
     user root
-	
-service fingerprintd /system/bin/fingerprintd 
-	class late_start 
-	user system
 
 service nvram_daemon /vendor/bin/nvram_daemon
     class main
