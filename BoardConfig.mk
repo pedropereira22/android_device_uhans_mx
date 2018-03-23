@@ -59,9 +59,6 @@ USE_MINIKIN := true
 # Configure jemalloc for low memory
 MALLOC_SVELTE := true
 
-# Use old sepolicy version
-POLICYVERS := 29
-
 # Include needed symbols
 TARGET_INCLUDE_XLOG_SYMBOLS := false
 TARGET_INCLUDE_RIL_SYMBOLS := true
