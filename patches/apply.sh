@@ -1,13 +1,14 @@
 #!/bin/bash
+cd ../..
 cd ../../../../frameworks/av
-git apply -v ../../device/walton/g7/patches/frameworks_av.patch
+patch -p1 < ../../device/uhans/mx/patches/frameworks_av.patch
 cd ../native
-git apply -v ../../device/walton/g7/patches/frameworks_native.patch
-git apply -v ../../device/walton/g7/patches/frameworks_native2.patch
+patch -p1 < ../../device/uhans/mx/patches/frameworks_native.patch
+patch -p1 < ../../device/uhans/mx/patches/frameworks_native2.patch
 cd ../../hardware/libhardware
-git apply -v ../../device/walton/g7/patches/hardware_libhardware.patch
+patch -p1 < ../../device/uhans/mx/patches/hardware_libhardware.patch
 cd ../../system/core
-git apply -v ../../device/walton/g7/patches/system_core.patch
-git apply -v ../../device/walton/g7/patches/system_core2.patch
+patch -p1 < ../../device/uhans/mx/patches/system_core.patch
+patch -p1 < ../../device/uhans/mx/patches/system_core2.patch
 cd ../../frameworks/base
-git apply -v ../../device/walton/g7/patches/key.patch
+patch -p1 < ../../device/uhans/mx/patches/key.patch

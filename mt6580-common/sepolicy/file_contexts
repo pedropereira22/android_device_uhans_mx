@@ -446,12 +446,3 @@
 /(system\/vendor|vendor)/etc/sensor(/.*)?        u:object_r:system_sensor_data_file:s0
 /(system\/vendor|vendor)/bin/sysenv_daemon u:object_r:sysenv_daemon_exec:s0
 
-#Chipone fingerprint  
-/dev/fpsensor                         u:object_r:chipone_fp_device:s0 
-
-#sunwave 
-/dev/sunwave_fp                       u:object_r:sunwave_device:s0 
-/system/bin directory/fpserver        u:object_r:fpserver_exec:s0 
-/data/data/sunwave(/.*)?              u:object_r:sw_fpserver_data_file:s0 
-/data/system/users/sunwave(/.*)?      U:object_r:sw_fpserver_data_file:s0
-

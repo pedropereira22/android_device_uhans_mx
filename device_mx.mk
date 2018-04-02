@@ -21,9 +21,6 @@ ro.mtk_agps_app=1 \
 persist.debug.xlog.enable=1 \
 persist.sys.display.clearMotion=0 
 
-# The gps config appropriate for this device
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
-
 $(call inherit-product-if-exists, vendor/uhans/mx/mx-vendor.mk)
 
 DEVICE_PACKAGE_OVERLAYS += device/uhans/mx/overlay

@@ -1,5 +1,5 @@
 # lunch
 
 for var in eng user userdebug; do
-  add_lunch_combo lineage_g7-$var
+  add_lunch_combo omni_mx-$var
 done
